@@ -1,33 +1,22 @@
-import React, {Component} from 'react';
-import Header from "./Header.js";
-import './App.css';
+import React, { Component } from 'react';
+import Header from './Header.js';
+import './ShowSubscribers.css';
+import { Link } from 'react-router-dom';
 
-class App extends Component {
-  clickHandler(message)
-  {
-    alert(message);
+class ShowSubscribers extends Component {
+
+  onDeletedClick = (subscriberId) => {
+    this.props.deleteSubscriberHandler(subscriberId); 
   }
 
   render() {
-
-    let subscribers = [
-      {
-        id: 1,
-        name: "Shilpa Bhat",
-        phone: "8888888888"
-      },
-      {
-        id: 2,
-        name: "Srishti Gupta",
-        phone: "9999999999"
-      }
-    ];
-
     return (
       <div>
         <Header heading="Phone Directory" />
         <div className="component-body-container">
-          <button className="custom-btn add-btn">Add</button>
+          <Link to="/add">
+            <button className="custom-btn add-btn">Add</button>
+          </Link>
 
           <div className="grid-container heading-container">
             <span className="grid-item name-heading">Name</span>
@@ -35,12 +24,12 @@ class App extends Component {
           </div>
 
           {
-            subscribers.map(sub => {
+            this.props.subscribersList.map(sub => {
               return <div key={sub.id} className="grid-container">
                 <span className="grid-item">{sub.name}</span>
                 <span className="grid-item">{sub.phone}</span>
                 <span className="grid-item action-btn-container">
-                  <button className="custom-btn delete-btn" onClick={this.clickHandler.bindI(this, "Delete Clicked")}>Delete</button>
+                  <button className="custom-btn delete-btn" onClick={this.onDeletedClick.bind(this, sub.id)}>Delete</button>
                 </span>
               </div>
             })
@@ -50,4 +39,5 @@ class App extends Component {
     );
   }
 }
-export default App;
+
+export default ShowSubscribers;
