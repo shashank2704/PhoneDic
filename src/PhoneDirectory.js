@@ -11,14 +11,10 @@ class PhoneDirectory extends Component {
             subscribersList: [
                 {
                     id: 1,
-                    name: "Shilpa Bhat",
-                    phone: "9999999999"
+                    name: "SHASHANK kUMAR",
+                    phone: "9754283930"
                 },
-                {
-                    id: 2,
-                    name: "Srishti Gupta",
-                    phone: "8888888888"
-                }
+                
             ]
         }
     }
